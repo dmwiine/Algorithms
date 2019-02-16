@@ -1,14 +1,14 @@
-def depth_first(matrix, source, terminal)
-    array_stack = [source]
+def breadth_first(matrix, source, terminal)
+    array_queue = [source]
 
     loop do
-        current_node = array_stack.pop
+        current_node = array_queue.pop
         return false if current_node.nil?
         return true if current_node == terminal
 
         children = (0..matrix.length-1).to_a.select do |i|
             matrix[current_node][i] == 1
         end
-        array_stack += children
+        array_queue = children + array_queue
     end
 end
